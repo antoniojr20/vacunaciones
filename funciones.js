@@ -1,14 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   const msg = document.getElementById("mensaje-ok");
-  if (msg) {
-    setTimeout(() => {
-      msg.style.transition = "opacity 0.5s";
-      msg.style.opacity = "0";
-      setTimeout(() => msg.remove(), 500);
-    }, 5000);
-
-  }
 
   const opciones = {
     rural: ["Cantón Valle Alegre", "Caserío las Pozas", "Caserio los herreras", "Canton los Ejidos", "Caserio la Estancia"],
@@ -37,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     opciones[tipo].forEach(texto => {
       const opt = document.createElement("option");
-      opt.value = texto.toLowerCase();
+      opt.value = texto;
       opt.textContent = texto;
       select.appendChild(opt);
     });
@@ -79,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
     contenedor.appendChild(div);
   }
 
-   /// crear los input de los Gatos
+  /// crear los input de los Gatos
   const cantidadMasGatos = document.getElementById("cantidadGatos");
   const contenedorGa = document.getElementById("inputsGatos");
 
@@ -115,11 +107,13 @@ document.addEventListener("DOMContentLoaded", () => {
     contenedorGa.appendChild(div);
   }
 
+  // ===== ENVÍO DEL FORMULARIO =====
   const form = document.querySelector("form");
   const btn = document.getElementById("btnGuardar");
 
   if (form && btn) {
-    btn.addEventListener("click", () => {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault(); // 🚨 evita redirección y doble envío
 
       btn.disabled = true;
       btn.textContent = "Guardando...";
@@ -132,18 +126,19 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .then(res => res.text())
       .then(() => {
-        alert("✅ Registro guardado correctamente");
-        form.reset();
+        msg.classList.remove("hidden");
+
+        setTimeout(() => {
+          msg.classList.add("hidden");
+        }, 5000);
+
+        // reset parcial
+        form.querySelector('[name="nombre"]').value = "";
+        form.querySelector('[name="comentario"]').value = "";
+        document.getElementById("cantidadPerros").value = "";
+        document.getElementById("cantidadGatos").value = "";
         document.getElementById("inputsPerros").innerHTML = "";
         document.getElementById("inputsGatos").innerHTML = "";
-
-        const ahora = new Date();
-        fechaInput.value = ahora.getFullYear() + "-" +
-          String(ahora.getMonth() + 1).padStart(2, "0") + "-" +
-          String(ahora.getDate()).padStart(2, "0") + " " +
-          String(ahora.getHours()).padStart(2, "0") + ":" +
-          String(ahora.getMinutes()).padStart(2, "0") + ":" +
-          String(ahora.getSeconds()).padStart(2, "0");
       })
       .catch(() => {
         alert("❌ Error al guardar");
@@ -152,7 +147,6 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.disabled = false;
         btn.textContent = "Guardar";
       });
-
     });
   }
 
@@ -161,8 +155,8 @@ document.addEventListener("DOMContentLoaded", () => {
   if (fechaInput) {
     const ahora = new Date();
 
-    // formato: YYYY-MM-DD HH:MM:SS
-    const fechaFormateada = ahora.getFullYear() + "-" +
+    const fechaFormateada =
+      ahora.getFullYear() + "-" +
       String(ahora.getMonth() + 1).padStart(2, "0") + "-" +
       String(ahora.getDate()).padStart(2, "0") + " " +
       String(ahora.getHours()).padStart(2, "0") + ":" +
