@@ -7,15 +7,12 @@
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
-<body class="pt-16">
+<body class="pt-10">
   <div id="navbar"></div>
 
 <form  method="POST" action="https://script.google.com/macros/s/AKfycbyuirVAIz6ldiDMKtCYBF9Vr4_yCLmd7-B-HVV7xelgTHxU15mw750yRLD9MVV7BBMs/exec"
   class="flex flex-col bg-white rounded shadow-2xl p-12 w-full max-w-2xl mx-auto">
 
-  <div id="mensaje-ok" class="hidden bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
-  Registro guardado correctamente
-</div>
 
   <div class="mb-5">
     <label class="block text-gray-700 text-sm font-bold mb-2">Nombre</label>
@@ -110,6 +107,9 @@
   Guardar
 </button>
 
+ <div id="mensaje-ok" class="hidden bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+  Registro guardado correctamente
+</div>
 
 </form>
 <script src="navbar.js"></script>
