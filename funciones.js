@@ -3,8 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const msg = document.getElementById("mensaje-ok");
 
   const opciones = {
-    rural: ["Cantón Valle Alegre", "Caserío las Pozas", "Caserio los herreras", "Canton los Ejidos", "Caserio la Estancia"],
-    urbano: ["Barrio el calvario", "Colonia la paz", "Barrio san pedro", "Barrio la Esperanza", "Barrio santa ana"]
+    rural: ["Cantón Hualama", "Canton cerca de Piedra"],
+    urbano: ["Barrio el Calvario", "Colonia La Paz", "Barrio San Pedro", "Barrio Santa Ana"]
   };
 
   document.querySelectorAll('input[name="zona"]').forEach(radio => {

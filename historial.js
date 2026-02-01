@@ -25,7 +25,9 @@ document.addEventListener("DOMContentLoaded", () => {
           ? new Date(row.fecha_registro).toLocaleString("es-SV", {
               year: "numeric",
               month: "2-digit",
-              day: "2-digit"
+              day: "2-digit",
+              hour: "2-digit",
+              minute: "2-digit"
             })
           : "";
 
@@ -33,7 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         tr.innerHTML = `
           <td class="border p-2">${fechaFormateada}</td>
-          <td class="border p-2">${row.nombre || ""}</td>
           <td class="border p-2">${row.ubicacion || ""}</td>
           <td class="border p-2 capitalize">${row.tipo_mascota || ""}</td>
           <td class="border p-2">${row.nombre_mascota || ""}</td>
