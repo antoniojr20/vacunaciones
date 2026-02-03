@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const msg = document.getElementById("mensaje-ok");
 
   const opciones = {
-    rural: ["Cantón Hualama", "Canton cerca de Piedra"],
+    rural: ["Cantón Hualama", "Canton cerca de Piedra","Canton San Jeronimo","Canton La Trinidad","Canton San Pedro"],
     urbano: ["Barrio el Calvario", "Colonia La Paz", "Barrio San Pedro", "Barrio Santa Ana"]
   };
 
