@@ -1,16 +1,66 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   const msg = document.getElementById("mensaje-ok");
+  const contenedorCaserio = document.getElementById("contenedorCaserio");
+  const selectCaserio = document.getElementById("caserio");
 
   const opciones = {
-    rural: ["Cantón Hualama", "Canton cerca de Piedra","Canton San Jeronimo","Canton La Trinidad","Canton San Pedro"],
-    urbano: ["Barrio el Calvario", "Colonia La Paz", "Barrio San Pedro", "Barrio Santa Ana"]
+    rural: ["Canton Cercos de Piedras", "Canton San Pedro","Canton Hualama","Canton San Geronimo","Canton La Trinidad"],
+    urbano: ["Colonia La Paz","Colonia La Presita","Colonia Guadalupe","Barrio Santa Ana","Barrio El Calvario","Barrio Santa Lucia","Barrio San Pedro"]
+  };
+
+  // ===== CASERÍOS POR CANTÓN =====
+  const caserios = {
+    "Canton Cercos de Piedras": [
+      "Caserio la Cruz",
+      "Caserio Las Guarumas",
+      "Caserio El Picacho"
+    ],
+    "Canton San Pedro": [
+      "Caserio El Jiote",
+      "Caserio Pie de la Cuesta",
+      "Caserio Los Carballos",
+      "Caserio santa Rita",
+      "Caserio Cacahuera",
+      "Caserio Singaltique"
+    ],
+    "Canton Hualama": [
+      "Caserio Hualama",
+      "Caserio Tamera",
+      "Caserio la Pista",
+      "Caserio El Puente",
+      "Caserio La Isla"
+    ],
+    "Canton San Geronimo": [
+      "Caserio Potosi",
+      "Caserio Crusero",
+      "Caserio Santo Tomas",
+      "Caserio San geronimo",
+      "Caserio El Zuntulin"
+    ],
+    "Canton La Trinidad": [
+      "Caserio Papalones",
+      "Caserio El Rodeo",
+      "Caserio Alto el Llano",
+      "Caserio Los Amates",
+      "Caserio Los Zelayas",
+      "Caserio La Pavaya",
+      "Caserio Corral Falso",
+      "Caserio Talpetate",
+      "Caserio La Trinidad"
+    ]
   };
 
   // Cambiar opciones de ubicación según zona
   document.querySelectorAll('input[name="zona"]').forEach(radio => {
     radio.addEventListener("change", e => {
       cambiarOpciones(e.target.value);
+      // Ocultar caseríos si cambia a urbano
+      if (e.target.value === "urbano") {
+        contenedorCaserio.classList.add("hidden");
+        selectCaserio.removeAttribute("required");
+        selectCaserio.value = "";
+      }
     });
   });
 
@@ -34,6 +84,31 @@ document.addEventListener("DOMContentLoaded", () => {
       select.appendChild(opt);
     });
   }
+
+  // ===== MOSTRAR CASERÍOS AL SELECCIONAR CANTÓN =====
+  document.getElementById("ubicacion").addEventListener("change", function() {
+    const ubicacionSeleccionada = this.value;
+    const zonaSeleccionada = document.querySelector('input[name="zona"]:checked')?.value;
+
+    // Solo mostrar caseríos si es zona rural Y es un cantón
+    if (zonaSeleccionada === "rural" && caserios[ubicacionSeleccionada]) {
+      contenedorCaserio.classList.remove("hidden");
+      selectCaserio.setAttribute("required", "required");
+      
+      // Llenar opciones de caseríos
+      selectCaserio.innerHTML = '<option value="" disabled selected>Seleccione un caserío</option>';
+      caserios[ubicacionSeleccionada].forEach(caserio => {
+        const opt = document.createElement("option");
+        opt.value = caserio;
+        opt.textContent = caserio;
+        selectCaserio.appendChild(opt);
+      });
+    } else {
+      contenedorCaserio.classList.add("hidden");
+      selectCaserio.removeAttribute("required");
+      selectCaserio.value = "";
+    }
+  });
 
   // ===== CREAR INPUTS DINÁMICOS PARA PERROS =====
   const cantidadPerros = document.getElementById("cantidadPerros");
@@ -136,6 +211,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // GUARDAR valores que NO se deben limpiar
         const zonaSeleccionada = document.querySelector('input[name="zona"]:checked')?.value || "";
         const ubicacionSeleccionada = document.getElementById("ubicacion").value;
+        const caserioGuardado = document.getElementById("caserio").value;
         const responsableGuardado = form.querySelector('[name="responsable"]').value;
 
         // Limpiar formulario
@@ -151,6 +227,22 @@ document.addEventListener("DOMContentLoaded", () => {
             // Esperar un momento para que se carguen las opciones
             setTimeout(() => {
               document.getElementById("ubicacion").value = ubicacionSeleccionada;
+              
+              // Restaurar caserío si es rural
+              if (zonaSeleccionada === "rural" && caserios[ubicacionSeleccionada]) {
+                contenedorCaserio.classList.remove("hidden");
+                selectCaserio.setAttribute("required", "required");
+                selectCaserio.innerHTML = '<option value="" disabled>Seleccione un caserío</option>';
+                caserios[ubicacionSeleccionada].forEach(caserio => {
+                  const opt = document.createElement("option");
+                  opt.value = caserio;
+                  opt.textContent = caserio;
+                  selectCaserio.appendChild(opt);
+                });
+                setTimeout(() => {
+                  selectCaserio.value = caserioGuardado;
+                }, 50);
+              }
             }, 50);
           }
         }
