@@ -1,13 +1,14 @@
 {
-  "name": "Vacunacion canina y felina",
-  "short_name": "Vacunacion",
-  "start_url": "/",
+  "name": "Vacunación",
+  "short_name": "Vacunación",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#0f172a",
   "icons": [
     {
-      "src": "icons/icon-128.png",
+      "src": "icons/icon-192.png",
       "sizes": "128x128",
       "type": "image/png"
     },
