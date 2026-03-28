@@ -252,10 +252,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         
         // Limpiar inputs dinámicos
-        document.getElementById("cantidadPerros").value = "0";
-        document.getElementById("cantidadGatos").value = "0";
-        document.getElementById("gatosencontrados").value = "0";
-        document.getElementById("perrosencontrados").value = "0";
+        document.getElementById("cantidadPerros").value = "";
+        document.getElementById("cantidadGatos").value = "";
+        document.getElementById("gatosencontrados").value = "";
+        document.getElementById("perrosencontrados").value = "";
         document.getElementById("inputsPerros").innerHTML = "";
         document.getElementById("inputsGatos").innerHTML = "";
 
