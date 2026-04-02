@@ -12,42 +12,42 @@ document.addEventListener("DOMContentLoaded", () => {
   // ===== CASERÍOS POR CANTÓN =====
   const caserios = {
     "Canton Cercos de Piedras": [
-      "Caserio la Cruz",
-      "Caserio Las Guarumas",
-      "Caserio El Picacho"
+      "La Cruz",
+      "Las Guarumas",
+      "El Picacho"
     ],
     "Canton San Pedro": [
-      "Caserio El Jiote",
-      "Caserio Pie de la Cuesta",
-      "Caserio Los Carballos",
-      "Caserio santa Rita",
-      "Caserio Cacahuera",
-      "Caserio Singaltique"
+      "El Jiote",
+      "Pie de la Cuesta",
+      "Los Carballos",
+      "Santa Rita",
+      "Cacahuera",
+      "Singaltique"
     ],
     "Canton Hualama": [
-      "Caserio Hualama",
-      "Caserio Tamera",
-      "Caserio la Pista",
-      "Caserio El Puente",
-      "Caserio La Isla"
+      "Hualama",
+      "Tamera",
+      "La Pista",
+      "El Puente",
+      "La Isla"
     ],
     "Canton San Geronimo": [
-      "Caserio Potosi",
-      "Caserio Crusero",
-      "Caserio Santo Tomas",
-      "Caserio San Geronimo",
-      "Caserio El Zuntulin"
+      "Potosi",
+      "Crusero",
+      "Santo Tomas",
+      "San eronimo",
+      "El Zuntulin"
     ],
     "Canton La Trinidad": [
-      "Caserio Papalones",
-      "Caserio El Rodeo",
-      "Caserio Alto el Llano",
-      "Caserio Los Amates",
-      "Caserio Los Zelayas",
-      "Caserio La Pavaya",
-      "Caserio Corral Falso",
-      "Caserio Talpetate",
-      "Caserio La Trinidad"
+      "Papalones",
+      "El Rodeo",
+      "Alto el Llano",
+      "Los Amates",
+      "Los Zelayas",
+      "La Pavaya",
+      "Corral Falso",
+      "Talpetate",
+      "La Trinidad"
     ]
   };
 
