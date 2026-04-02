@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "Caserio Potosi",
       "Caserio Crusero",
       "Caserio Santo Tomas",
-      "Caserio San geronimo",
+      "Caserio San Geronimo",
       "Caserio El Zuntulin"
     ],
     "Canton La Trinidad": [
