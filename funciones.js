@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "Potosi",
       "Crusero",
       "Santo Tomas",
-      "San eronimo",
+      "San Geronimo",
       "El Zuntulin"
     ],
     "Canton La Trinidad": [
